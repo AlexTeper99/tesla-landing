@@ -8,9 +8,12 @@ import Section from "./Section.astro";
   color="black"
   id="model-y"
 >
-  <div slot="footer" class="gap-x-6 flex mx-auto">
+  <div
+    slot="footer"
+    class="gap-x-6 flex mx-auto flex-wrap gap-y-6 justify-center"
+  >
     <a
-      class="border-[3px] border-gray-600 bg-gray-600 text-sm rounded font-medium text-white px-12 py-2 inline-block transition-colors hover:border-gray-500 hover:bg-gray-500"
+      class="min-w-[258px] bg-gray-600 text-sm rounded font-medium text-white px-12 py-2 inline-block transition-colors hover:border-gray-500 hover:bg-gray-500"
       href="#"
     >
       Explorar inventario</a
@@ -48,10 +51,26 @@ import Section from "./Section.astro";
     "#bg-image-modely"
   ) as HTMLImageElement;
 
-  if (isEdge()) {
-    //https://digitalassets.tesla.com/tesla-contents/video/upload/Homepage-Model-Y-Mobile-NA-v2.mp4
-    imageElement.src = "model-y.webp";
-  } else {
-    imageElement.src = "model-y.avif";
+  function handleImage() {
+    var width = window.matchMedia("(max-width: 600px)");
+    if (isEdge()) {
+      if (width.matches || window.innerWidth < 600) {
+        imageElement.src =
+          "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Mobile-LHD-6.22.jpg";
+      } else {
+        imageElement.src = "model-y.webp";
+      }
+    } else {
+      if (width.matches) {
+        imageElement.src =
+          "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Mobile-LHD-6.22.jpg";
+      } else {
+        imageElement.src = "model-y.avif";
+      }
+    }
   }
+
+  // Add this event listener to call the function when the window is resized
+  window.addEventListener("resize", handleImage);
+  window.addEventListener("load", handleImage);
 </script>
