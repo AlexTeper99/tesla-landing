@@ -1,18 +1,31 @@
 ---
 export interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Tesla landing clone web app by Alex Teper. Created using Astro + HTML + CSS + JS + Tailwind CSS"
+    />
+    <meta property="og:title" content="Tesla clone" />
+    <meta property="og:url" content="https://tesla-landing-puce.vercel.app/
+" />
+    <meta
+      property="og:description"
+      content="Tesla landing clone web app by Alex Teper. Created using Astro + HTML + CSS + JS + Tailwind CSS"
+    />
+    <meta property="og:image" content="/favicon.svg" />
+    <meta property="og:type" content="website" />
     <title>{title}</title>
   </head>
   <body>
